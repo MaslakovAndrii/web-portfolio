@@ -1,7 +1,8 @@
 // Импорт функционала ==============================================================================================================================================================================================================================================================================================================================
 // import { isMobile } from "./functions.js";
 // import { formsModules } from "./forms/forms.js";
-import { removeClasses } from "./functions.js";
+// import { removeClasses } from "./functions.js";
+
 
 
 const placeholder = `
@@ -51,7 +52,29 @@ function togglePlaceholder() {
     }
 }
 
+function moveDrawer(elem) {
+    const drawersFilled = document.querySelectorAll('.drawer_filled')
+    const drawersArrow = document.querySelectorAll('.drawer__arrow')
+    if (elem.target.closest('.drawer__arrow') && !elem.target.closest('.active_arrow')) {
+        drawersArrow.forEach(e => {
+            e.classList.remove(`active_arrow`)
+        })
+        drawersFilled.forEach(e => {
+            e.classList.remove(`active_drawer`)
+        })
 
+        elem.target.parentNode.classList.toggle('active_drawer')
+        elem.target.classList.toggle('active_arrow')
+
+    } else if (elem.target.closest('.drawer__arrow') && elem.target.closest('.active_arrow')) {
+        drawersArrow.forEach(e => {
+            e.classList.remove(`active_arrow`)
+        })
+        drawersFilled.forEach(e => {
+            e.classList.remove(`active_drawer`)
+        })
+    }
+}
 
 
 class SlowPrint {
@@ -91,22 +114,23 @@ class SlowPrint {
 }
 const printName = new SlowPrint('.start-screen__name');
 
+
+
+
+
 //Event listener
 window.addEventListener('load', () => {
     togglePlaceholder(),
-        printName.print()
+    printName.print()
 });
 window.addEventListener('resize', () => {
     togglePlaceholder()
 });
 
-
 document.addEventListener('click', e => {
-    if(e.target.closest('.drawer__arrow')) {
-        e.target.parentNode.classList.toggle('active')
-        e.target.classList.toggle('active_arrow')
-    } 
+    moveDrawer(e)
 });
+
 
 
 
