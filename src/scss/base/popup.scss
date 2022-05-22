@@ -15,6 +15,7 @@ body.popup-show::after {
 	opacity: 1;
 }
 .popup {
+	font-family: "Roboto";
 	color: $blackColor;
 	position: fixed;
 	top: 0;
@@ -39,6 +40,12 @@ body.popup-show::after {
 	}
 	&__text {
 		line-height: 20px;
+		display: flex;
+		flex-direction: column;
+		row-gap: 10px;
+		&  p {
+			line-height: 130%;
+		}
 	}
 }
 .popup_show {
@@ -72,7 +79,7 @@ body.popup-show::after {
 	padding: 50px 50px;
 	width: 100%;
 	max-width: 900px;
-	border-radius: 20px;
+	border-radius: 10px;
 	.lock & {
 		visibility: visible;
 	}
