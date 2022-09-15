@@ -27,6 +27,7 @@ body.popup-show::after {
 	visibility: hidden;
 	pointer-events: none;
 
+
 	&__close {
 		font-weight: bold;
 		position: absolute;
@@ -47,7 +48,35 @@ body.popup-show::after {
 			line-height: 130%;
 		}
 	}
+     &__order-list {
+          padding: 0 20px;
+     }
+     &__unordered-list{
+          
+     }
 }
+.order-list {
+
+}
+.unordered-list {
+     &__item {
+          padding: 0 20px;
+          position: relative;
+     }
+     &__item::before{
+          content: '';
+          display: inline-block;
+          position: absolute;
+          top: 7px;
+          left: 5px;
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background-color: $greenColor;
+     }
+}
+
+
 .popup_show {
 	z-index: 150;
 	visibility: visible;
